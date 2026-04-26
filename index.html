@@ -1,57 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Metro Legends</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- GAME WORLD -->
-<div id="game">
-    <div id="map"></div>
-
-    <!-- Player -->
-    <div id="player"></div>
-
-    <!-- Controls -->
-    <div id="controls">
-        <button onclick="move('up')">↑</button>
-        <button onclick="move('left')">←</button>
-        <button onclick="move('down')">↓</button>
-        <button onclick="move('right')">→</button>
-    </div>
-</div>
-
-<!-- BATTLE SCREEN -->
-<div id="battle" class="hidden">
-
-    <h2>🔥 Street Battle</h2>
-
-    <!-- Enemy -->
-    <div id="enemy-area">
-        <div id="enemy"></div>
-        <div class="bar">
-            <div id="enemyHP" class="hp"></div>
-        </div>
-    </div>
-
-    <!-- Player -->
-    <div id="player-area">
-        <div id="player-battle"></div>
-        <div class="bar">
-            <div id="playerHP" class="hp"></div>
-        </div>
-    </div>
-
-    <!-- Actions -->
-    <div id="battle-controls">
-        <button onclick="attack()">Attack</button>
-        <button onclick="run()">Run</button>
-    </div>
-
-</div>
+<canvas id="gameCanvas"></canvas>
 
 <script src="game.js"></script>
 </body>

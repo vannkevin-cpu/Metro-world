@@ -8,11 +8,12 @@
 </head>
 <body>
 
+<!-- GAME WORLD -->
 <div id="game">
     <div id="map"></div>
 
     <!-- Player -->
-    <div id="player">🧍‍♂️</div>
+    <div id="player"></div>
 
     <!-- Controls -->
     <div id="controls">
@@ -23,18 +24,33 @@
     </div>
 </div>
 
-<!-- Battle Screen -->
+<!-- BATTLE SCREEN -->
 <div id="battle" class="hidden">
-    <h2>Wild Beast Appeared!</h2>
-    <div class="hp-bar">
-        Enemy HP: <span id="enemyHP">100</span>
-    </div>
-    <div class="hp-bar">
-        Your HP: <span id="playerHP">100</span>
+
+    <h2>🔥 Street Battle</h2>
+
+    <!-- Enemy -->
+    <div id="enemy-area">
+        <div id="enemy"></div>
+        <div class="bar">
+            <div id="enemyHP" class="hp"></div>
+        </div>
     </div>
 
-    <button onclick="attack()">Attack</button>
-    <button onclick="run()">Run</button>
+    <!-- Player -->
+    <div id="player-area">
+        <div id="player-battle"></div>
+        <div class="bar">
+            <div id="playerHP" class="hp"></div>
+        </div>
+    </div>
+
+    <!-- Actions -->
+    <div id="battle-controls">
+        <button onclick="attack()">Attack</button>
+        <button onclick="run()">Run</button>
+    </div>
+
 </div>
 
 <script src="game.js"></script>

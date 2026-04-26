@@ -89,5 +89,49 @@ body {
 }
 
 .hidden {
-    display: none;
+    display: /* Battle Layout */
+#enemy-area {
+    margin-top: 30px;
+}
+
+#player-area {
+    position: absolute;
+    bottom: 120px;
+    width: 100%;
+}
+
+/* Battle player */
+#player-battle {
+    width: 60px;
+    height: 60px;
+    background: #00aaff;
+    margin: 10px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #00aaff;
+}
+
+/* Attack animation */
+.hit {
+    animation: hitFlash 0.2s ease;
+}
+
+@keyframes hitFlash {
+    0% { background: white; }
+    100% { background: crimson; }
+}
+
+/* Buttons */
+#battle-controls {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+}
+
+#battle-controls button {
+    padding: 15px;
+    margin: 10px;
+    font-size: 18px;
+    border-radius: 10px;
+    background: #222;
+    color: white;
 }

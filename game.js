@@ -30,14 +30,25 @@ function attack() {
     enemyHP -= playerDamage;
     playerHP -= enemyDamage;
 
+    // Animation
+    let enemy = document.getElementById("enemy");
+    enemy.classList.add("hit");
+    setTimeout(() => enemy.classList.remove("hit"), 200);
+
     updateHP();
 
     if (enemyHP <= 0) {
-        alert("You won!");
-        endBattle();
+        setTimeout(() => {
+            alert("You won!");
+            endBattle();
+        }, 300);
     } else if (playerHP <= 0) {
-        alert("You lost!");
-        endBattle();
+        setTimeout(() => {
+            alert("You lost!");
+            endBattle();
+        }, 300);
+    }
+}
     }
 }
 

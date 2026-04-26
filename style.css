@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: Arial;
-    background: #111;
+    background: #0a0a0a;
     color: white;
     text-align: center;
 }
@@ -10,37 +10,50 @@ body {
     position: relative;
     width: 100%;
     height: 80vh;
-    background: linear-gradient(#222, #000);
+    background: linear-gradient(#1a1a1a, #000);
+    overflow: hidden;
 }
 
+/* Grid city feel */
 #map {
     width: 100%;
     height: 100%;
+    background:
+        linear-gradient(#222 2px, transparent 2px),
+        linear-gradient(90deg, #222 2px, transparent 2px);
+    background-size: 50px 50px;
 }
 
+/* Player upgrade */
 #player {
     position: absolute;
     top: 40%;
     left: 45%;
-    font-size: 40px;
+    width: 30px;
+    height: 30px;
+    background: #00aaff;
+    border-radius: 6px;
+    box-shadow: 0 0 10px #00aaff;
 }
 
+/* Controls */
 #controls {
     position: fixed;
-    bottom: 10px;
+    bottom: 15px;
     width: 100%;
 }
 
 #controls button {
-    padding: 15px;
-    margin: 5px;
+    padding: 18px;
+    margin: 6px;
     font-size: 18px;
+    border-radius: 10px;
+    border: none;
+    background: #333;
+    color: white;
 }
 
-.hidden {
-    display: none;
-}
-
+/* Battle screen */
 #battle {
     position: fixed;
     top: 0;
@@ -48,9 +61,33 @@ body {
     width: 100%;
     height: 100%;
     background: #000;
-    padding-top: 50px;
+    padding-top: 40px;
 }
 
-.hp-bar {
-    margin: 10px;
+/* HP bars */
+.bar {
+    width: 80%;
+    height: 20px;
+    background: #333;
+    margin: 10px auto;
+    border-radius: 10px;
+}
+
+.hp {
+    height: 100%;
+    background: limegreen;
+    border-radius: 10px;
+}
+
+/* Enemy */
+#enemy {
+    width: 80px;
+    height: 80px;
+    background: crimson;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+
+.hidden {
+    display: none;
 }

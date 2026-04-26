@@ -13,10 +13,7 @@ function move(direction) {
     document.getElementById("player").style.top = playerY + "%";
     document.getElementById("player").style.left = playerX + "%";
 
-    // Random encounter
-    if (Math.random() < 0.2) {
-        startBattle();
-    }
+    if (Math.random() < 0.25) startBattle();
 }
 
 function startBattle() {
@@ -27,8 +24,11 @@ function startBattle() {
 }
 
 function attack() {
-    enemyHP -= Math.floor(Math.random() * 20);
-    playerHP -= Math.floor(Math.random() * 15);
+    let playerDamage = Math.floor(Math.random() * 20) + 5;
+    let enemyDamage = Math.floor(Math.random() * 15);
+
+    enemyHP -= playerDamage;
+    playerHP -= enemyDamage;
 
     updateHP();
 
@@ -50,6 +50,6 @@ function endBattle() {
 }
 
 function updateHP() {
-    document.getElementById("enemyHP").innerText = enemyHP;
-    document.getElementById("playerHP").innerText = playerHP;
+    document.getElementById("enemyHP").style.width = enemyHP + "%";
+    document.getElementById("playerHP").style.width = playerHP + "%";
 }

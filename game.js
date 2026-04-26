@@ -1,66 +1,62 @@
-let playerX = 45;
-let playerY = 40;
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
 
-let playerHP = 100;
-let enemyHP = 100;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-function move(direction) {
-    if (direction === "up") playerY -= 2;
-    if (direction === "down") playerY += 2;
-    if (direction === "left") playerX -= 2;
-    if (direction === "right") playerX += 2;
+let player = {
+  x: 100,
+  y: 100,
+  size: 32,
+  speed: 3
+};
 
-    document.getElementById("player").style.top = playerY + "%";
-    document.getElementById("player").style.left = playerX + "%";
+// Load sprite
+const playerImg = new Image();
+playerImg.src = "assets/player.png";
 
-    if (Math.random() < 0.25) startBattle();
+// Movement
+let keys = {};
+
+window.addEventListener("keydown", e => keys[e.key] = true);
+window.addEventListener("keyup", e => keys[e.key] = false);
+
+// Touch controls
+window.addEventListener("touchstart", e => {
+  let x = e.touches[0].clientX;
+  if (x < window.innerWidth / 2) keys["ArrowLeft"] = true;
+  else keys["ArrowRight"] = true;
+});
+
+window.addEventListener("touchend", () => {
+  keys = {};
+});
+
+// Game loop
+function update(){
+  if(keys["ArrowUp"]) player.y -= player.speed;
+  if(keys["ArrowDown"]) player.y += player.speed;
+  if(keys["ArrowLeft"]) player.x -= player.speed;
+  if(keys["ArrowRight"]) player.x += player.speed;
+
+  // Random encounter
+  if(Math.random() < 0.005){
+    alert("Wild Beast Encounter!");
+  }
 }
 
-function startBattle() {
-    document.getElementById("battle").classList.remove("hidden");
-    enemyHP = 100;
-    playerHP = 100;
-    updateHP();
+function draw(){
+  ctx.fillStyle = "#111";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+
+  // Draw player
+  ctx.drawImage(playerImg, player.x, player.y, player.size, player.size);
 }
 
-function attack() {
-    let playerDamage = Math.floor(Math.random() * 20) + 5;
-    let enemyDamage = Math.floor(Math.random() * 15);
-
-    enemyHP -= playerDamage;
-    playerHP -= enemyDamage;
-
-    // Animation
-    let enemy = document.getElementById("enemy");
-    enemy.classList.add("hit");
-    setTimeout(() => enemy.classList.remove("hit"), 200);
-
-    updateHP();
-
-    if (enemyHP <= 0) {
-        setTimeout(() => {
-            alert("You won!");
-            endBattle();
-        }, 300);
-    } else if (playerHP <= 0) {
-        setTimeout(() => {
-            alert("You lost!");
-            endBattle();
-        }, 300);
-    }
-}
-    }
+function loop(){
+  update();
+  draw();
+  requestAnimationFrame(loop);
 }
 
-function run() {
-    endBattle();
-}
-
-function endBattle() {
-    document.getElementById("battle").classList.add("hidden");
-}
-
-function updateHP() {
-    document.getElementById("enemyHP").style.width = enemyHP + "%";
-    document.getElementById("playerHP").style.width = playerHP + "%";
-}
+loop();
